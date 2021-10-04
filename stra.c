@@ -34,7 +34,7 @@ char *Str_concat(char dest[], const char source[])
     return dest;
 }
 
-int Str_compare(char str1[], char str2[])
+int Str_compare(const char str1[], const char str2[])
 {
     size_t i = 0;
     assert(str1 != NULL);
