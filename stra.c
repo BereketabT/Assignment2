@@ -63,10 +63,10 @@ char *Str_search (const char haystack[], const char needle[])
     while (haystack[i] != '\0') {
         j = 0;
 
-        while (haystack[i + j] == needle[i + j])
+        while (haystack[i + j] == needle[j])
         {
             j++;
-            if (needle[i + j] == '\0')
+            if (needle[j] == '\0')
                 return (char *) &haystack[i];
         }
 
