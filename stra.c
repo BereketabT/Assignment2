@@ -18,11 +18,12 @@ char *Str_copy(char dest[], const char source[])
     assert(dest != NULL);
     assert(source != NULL);
 
-    while (source[i] != '\0') {
+    while (1) {
         dest[i] = source[i];
+        if (source[i] == '\0')
+            return dest;
         i++;
     }
-    return dest;
 }
 
 char *Str_concat(char dest[], const char source[])
