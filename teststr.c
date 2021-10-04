@@ -485,7 +485,7 @@ static void testSearch(void)
       const char acNeedle[] = "";
       pcResult1 = Str_search(acHaystack, acNeedle);
       pcResult2 = strstr(acHaystack, acNeedle);
-      // printf("EXPECTED RESULT: %c\nRESULT: %c", *pcResult2, *pcResult1);
+      /* printf("EXPECTED RESULT: %c\nRESULT: %c", *pcResult2, *pcResult1); */
       ASSURE(pcResult1 == pcResult2);
    }
 
