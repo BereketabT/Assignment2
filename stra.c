@@ -53,21 +53,21 @@ int Str_compare(const char str1[], const char str2[])
         return 1;
 }
 
-char *Str_search (const char str[], const char query[])
+char *Str_search (const char haystack[], const char needle[])
 {
     size_t i = 0;
     size_t j;
-    assert(str != NULL);
-    assert(query != NULL);
+    assert(haystack != NULL);
+    assert(needle != NULL);
 
-    while (str[i] != '\0') {
+    while (haystack[i] != '\0') {
         j = 0;
 
-        while (str[i + j] == query[i + j])
+        while (haystack[i + j] == needle[i + j])
         {
             j++;
-            if (query[i + j] == '\0')
-                return (char *) &str[i];
+            if (needle[i + j] == '\0')
+                return (char *) &haystack[i];
         }
 
         i++;
