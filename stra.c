@@ -60,7 +60,7 @@ char *Str_search (const char haystack[], const char needle[])
     assert(haystack != NULL);
     assert(needle != NULL);
 
-    if (haystack[0] == '\0' && needle[0] =='\0')
+    if (needle[0] =='\0')
         return (char *) haystack;
 
     while (haystack[i] != '\0') {
