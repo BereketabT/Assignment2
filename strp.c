@@ -1,0 +1,95 @@
+#include <stddef.h>
+#include <assert.h>
+
+size_t Str_getLength(const char *source);
+char *Str_copy(char *dest, const char *pcSource);
+char *Str_concat(char *dest, const char *source);
+int Str_compare(const char *str1, const char *str2);
+char *Str_search (const char *pcHaystack, const char *pcNeedle);
+
+size_t Str_getLength(const char *source)
+{
+    const char *end;
+    assert(source != NULL);
+    end = source;
+    while (*end != '\0')
+        end++;
+    return (size_t)(end - source);
+}
+
+char *Str_copy(char *dest, const char *pcSource)
+{
+    assert(dest != NULL);
+    assert(pcSource != NULL);
+
+    char *source = pcSource;
+    char *beginning = dest;
+
+    while (1) {
+        *dest = *source;
+        if (*source == '\0')
+            dest == beginning;
+            return dest;
+        dest++;
+        source++;
+    }
+}
+
+char *Str_concat(char *dest, const char *source)
+{
+    assert(dest != NULL);
+    assert(source != NULL);
+
+    Str_copy((dest + Str_getLength(dest)), source);
+    return dest;
+}
+
+int Str_compare(const char *clientStr1, const char *clientStr2)
+{
+    assert(clientStr1 != NULL);
+    assert(clientStr2 != NULL);
+
+    char *str1 = clientStr1;
+    char *str2 = clientStr2;
+
+    while (*str1 == *str2) {
+        if((*str1 == '\0') && (*str2 == '\0'))
+            return 0;
+        str1++;
+        str2++;
+    }
+
+    if (*str1 < *str2)
+        return -1;
+    else
+        return 1;
+}
+
+char *Str_search (const char *pcHaystack, const char *pcNeedle)
+{
+    assert(pcHaystack != NULL);
+    assert(pcNeedle != NULL);
+
+    char *haystack, *haystackStart = pcHaystack;
+    char *needle, *needleStart = pcNeedle;
+
+    if (*needle =='\0')
+        return haystack;
+
+    while (*haystack != '\0') {
+        haystackStart = haystack; /* Keeps track of where in the haystack this search starts */
+        needle = needleStart;     /* Resets the pointer needle to the start of the needle string */
+
+        while (*haystack == *needle)
+        {
+            haystack++;
+            needle++;
+            if (*needle == '\0')
+                return haystack;
+        }
+
+        haystack++;
+    }
+
+    return NULL;
+}
