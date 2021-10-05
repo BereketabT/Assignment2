@@ -35,10 +35,10 @@ char *Str_copy(char *dest, const char *source)
 
 char *Str_concat(char *dest, const char *source)
 {
+    char *start = dest;
+    
     assert(dest != NULL);
     assert(source != NULL);
-
-    char *start = dest;
 
     while (*dest != '\0')
         dest++;
