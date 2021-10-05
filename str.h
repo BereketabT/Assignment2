@@ -7,7 +7,7 @@
 size_t Str_getLength(const char source[]);
 
 /* Copies the string source to dest and returns pointer to dest */
-char *Str_copy(char dest[], const char pcSource[]);
+char *Str_copy(char dest[], const char source[]);
 
 /* Concaticates string source to end of string dest and returns pointer to dest */
 char *Str_concat(char dest[], const char source[]);
@@ -18,5 +18,3 @@ int Str_compare(const char str1[], const char str2[]);
 
 /* Searches string haystack for first occurance of string needle and returns pointer to first occurance */
 char *Str_search (const char pcHaystack[], const char pcNeedle[]);
-
-#endif
