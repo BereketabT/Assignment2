@@ -23,6 +23,7 @@ static size_t replaceAndWrite(const char *pcLine,
    /* Length of pcFrom and pcTo including null character */
    size_t fromLength = Str_getLength(pcFrom) + 1;
    size_t toLength = Str_getLength(pcTo) + 1;
+   char *pcLineStart = pcLine;
    char *foundLocation;
    char *remainderOfLine;
    size_t replacements = 0;
@@ -30,8 +31,10 @@ static size_t replaceAndWrite(const char *pcLine,
    while (*pcLine != '\0') {
    char *foundLocation = Str_search(pcLine, pcFrom);
 
-   if (foundLocation = NULL)
+   if (foundLocation == NULL) {
+      printf("%s", pcLineStart);
       return replacements;
+   }
    replacements++;
 
    /* Saves the part of pcLine that comes after the occurance of pcFrom */
@@ -77,7 +80,6 @@ int main(int argc, char *argv[])
 
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) {
       uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
-      printf("%s\n", acLine);
    }
       
 
