@@ -27,7 +27,7 @@ static size_t replaceAndWrite(const char *pcLine,
    char *line;
    char *lineStart;
    char *foundLocation;
-   char *remainderOfLine = line;
+   char *remainderOfLine;
    size_t replacements = 0;
    Str_copy(line, pcLine);
    lineStart = line;
