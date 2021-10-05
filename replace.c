@@ -23,16 +23,19 @@ static size_t replaceAndWrite(const char *pcLine,
    /* Length of pcFrom and pcTo including null character */
    size_t fromLength = Str_getLength(pcFrom) + 1;
    size_t toLength = Str_getLength(pcTo) + 1;
-   char *pcLineStart = pcLine;
+   /* Working copy of pcLine */
+   char *line;
+   char *lineStart = line;
    char *foundLocation;
-   char *remainderOfLine = pcLine;
+   char *remainderOfLine = line;
    size_t replacements = 0;
+   Str_copy(line, pcLine);
 
-   while (*pcLine != '\0') {
-   char *foundLocation = Str_search(pcLine, pcFrom);
+   while (*line != '\0') {
+   char *foundLocation = Str_search(line, pcFrom);
 
    if (foundLocation == NULL) {
-      printf("%s", pcLineStart);
+      printf("%s", lineStart);
       return replacements;
    }
    replacements++;
@@ -41,8 +44,8 @@ static size_t replaceAndWrite(const char *pcLine,
    Str_copy(remainderOfLine, foundLocation + fromLength);
 
    Str_copy(foundLocation, pcTo);
-   Str_concat(pcLine, remainderOfLine);
-   pcLine = foundLocation + toLength;
+   Str_concat(line, remainderOfLine);
+   line = foundLocation + toLength;
    }
 }
 
