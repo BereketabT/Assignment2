@@ -38,7 +38,10 @@ char *Str_concat(char *dest, const char *source)
     assert(dest != NULL);
     assert(source != NULL);
 
-    Str_copy((dest + Str_getLength(dest)), source);
+    while (*dest != '\0')
+        dest++;
+
+    Str_copy(dest, source);
     return dest;
 }
 

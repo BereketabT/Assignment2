@@ -20,7 +20,27 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   /* Insert your code here. */
+   /* Length of pcFrom and pcTo including null character */
+   size_t fromLength = Str_getLength(pcFrom) + 1;
+   size_t toLength = Str_getLength(pcTo) + 1;
+   char *foundLocation;
+   char *remainderOfLine;
+   size_t replacements = 0;
+
+   while (*pcLine != '\0') {
+   char *foundLocation = Str_search(pcLine, pcFrom);
+
+   if (foundLocation = NULL)
+      return replacements;
+   replacements++;
+
+   /* Saves the part of pcLine that comes after the occurance of pcFrom */
+   Str_copy(remainderOfLine, foundLocation + fromLength);
+
+   Str_copy(foundLocation, pcTo);
+   Str_concat(pcLine, remainderOfLine);
+   pcLine = foundLocation + toLength;
+   }
 }
 
 /*--------------------------------------------------------------------*/
