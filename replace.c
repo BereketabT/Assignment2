@@ -25,7 +25,7 @@ static size_t replaceAndWrite(const char *pcLine,
    size_t toLength = Str_getLength(pcTo) + 1;
    char *pcLineStart = pcLine;
    char *foundLocation;
-   char *remainderOfLine;
+   char *remainderOfLine = pcLine;
    size_t replacements = 0;
 
    while (*pcLine != '\0') {
