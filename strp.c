@@ -5,7 +5,7 @@ size_t Str_getLength(const char *source);
 char *Str_copy(char *dest, const char *source);
 char *Str_concat(char *dest, const char *source);
 int Str_compare(const char *str1, const char *str2);
-char *Str_search (const char *pcHaystack, const char *pcNeedle);
+char *Str_search (const char *haystack, const char *needle);
 
 size_t Str_getLength(const char *source)
 {
@@ -22,12 +22,9 @@ char *Str_copy(char *dest, const char *source)
     assert(dest != NULL);
     assert(source != NULL);
 
-    char *beginning = dest;
-
     while (1) {
         *dest = *source;
         if (*source == '\0')
-            dest == beginning;
             return dest;
         dest++;
         source++;
@@ -64,19 +61,19 @@ int Str_compare(const char *clientStr1, const char *clientStr2)
         return 1;
 }
 
-char *Str_search (const char *pcHaystack, const char *pcNeedle)
+char *Str_search (const char *haystack, const char *needle)
 {
-    assert(pcHaystack != NULL);
-    assert(pcNeedle != NULL);
+    assert(haystack != NULL);
+    assert(needle != NULL);
 
-    char *haystack, *haystackStart = pcHaystack;
-    char *needle, *needleStart = pcNeedle;
+    char *searchStart = haystack;
+    char *needleStart = needle;
 
     if (*needle =='\0')
         return haystack;
 
     while (*haystack != '\0') {
-        haystackStart = haystack; /* Keeps track of where in the haystack this search starts */
+        searchStart = haystack; /* Keeps track of where in the haystack this search starts */
         needle = needleStart;     /* Resets the pointer needle to the start of the needle string */
 
         while (*haystack == *needle)
