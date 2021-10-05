@@ -25,11 +25,12 @@ static size_t replaceAndWrite(const char *pcLine,
    size_t toLength = Str_getLength(pcTo) + 1;
    /* Working copy of pcLine */
    char *line;
-   char *lineStart = line;
+   char *lineStart;
    char *foundLocation;
    char *remainderOfLine = line;
    size_t replacements = 0;
    Str_copy(line, pcLine);
+   lineStart = line;
 
    while (*line != '\0') {
    char *foundLocation = Str_search(line, pcFrom);
