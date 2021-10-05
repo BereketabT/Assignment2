@@ -40,6 +40,7 @@ char *Str_concat(char *dest, const char *source)
 
     while (*dest != '\0')
         dest++;
+    dest++;
 
     Str_copy(dest, source);
     return dest;
