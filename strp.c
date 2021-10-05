@@ -60,14 +60,14 @@ int Str_compare(const char *str1, const char *str2)
 
 char *Str_search (const char *haystack, const char *needle)
 {
+    const char *searchStart = haystack;
+    const char *needleStart = needle;
+    
     assert(haystack != NULL);
     assert(needle != NULL);
 
-    char *searchStart = haystack;
-    char *needleStart = needle;
-
     if (*needle =='\0')
-        return haystack;
+        return (char *) haystack;
 
     while (*haystack != '\0') {
         searchStart = haystack; /* Keeps track of where in the haystack this search starts */
