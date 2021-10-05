@@ -38,12 +38,13 @@ char *Str_concat(char *dest, const char *source)
     assert(dest != NULL);
     assert(source != NULL);
 
+    char *start = dest;
+
     while (*dest != '\0')
         dest++;
-    dest++;
 
     Str_copy(dest, source);
-    return dest;
+    return start;
 }
 
 int Str_compare(const char *str1, const char *str2)
