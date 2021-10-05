@@ -42,8 +42,8 @@ char *Str_concat(char *dest, const char *source)
 
 int Str_compare(const char *str1, const char *str2)
 {
-    assert(clientStr1 != NULL);
-    assert(clientStr2 != NULL);
+    assert(str1 != NULL);
+    assert(str2 != NULL);
 
     while (*str1 == *str2) {
         if((*str1 == '\0') && (*str2 == '\0'))
