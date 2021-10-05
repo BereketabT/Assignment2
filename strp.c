@@ -19,13 +19,15 @@ size_t Str_getLength(const char *source)
 
 char *Str_copy(char *dest, const char *source)
 {
+    char *start = dest;
+    
     assert(dest != NULL);
     assert(source != NULL);
 
     while (1) {
         *dest = *source;
         if (*source == '\0')
-            return dest;
+            return start;
         dest++;
         source++;
     }
