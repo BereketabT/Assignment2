@@ -78,9 +78,10 @@ char *Str_search (const char *haystack, const char *needle)
             haystack++;
             needle++;
             if (*needle == '\0')
-                return haystack;
+                return (char *) haystack;
         }
 
+        haystack == searchStart;
         haystack++;
     }
 
