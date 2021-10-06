@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------*/
 /* replace.c                                                          */
-/* Author: ???                                                        */
+/* Author: Bereketab Tessema                                          */
 /*--------------------------------------------------------------------*/
 
 #include "str.h"
@@ -23,11 +23,15 @@ static size_t replaceAndWrite(const char *pcLine,
    const char *foundLocation = pcLine;
    size_t replacements = 0;
 
+   assert(pcLine != NULL);
+   assert(pcFrom != NULL);
+   assert(pcTo != NULL);
+
    if (*pcFrom == '\0') {
       printf("%s", pcLine);
       return replacements;
    }
-   
+
    while (1)
    {
       foundLocation = Str_search(pcLine, pcFrom);
