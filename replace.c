@@ -20,33 +20,28 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   /* Length of pcFrom and pcTo including null character */
-   size_t fromLength = Str_getLength(pcFrom) + 1;
-   size_t toLength = Str_getLength(pcTo) + 1;
-   /* Working copy of pcLine */
-   char *line;
-   char *lineStart;
-   char *foundLocation;
-   char *remainderOfLine;
+   char *foundLocation = pcLine;
    size_t replacements = 0;
-   Str_copy(line, pcLine);
-   lineStart = line;
 
-   while (*line != '\0') {
-   char *foundLocation = Str_search(line, pcFrom);
+   while (1)
+   {
+      foundLocation = Str_search(pcLine, pcFrom);
 
-   if (foundLocation == NULL) {
-      printf("%s", lineStart);
-      return replacements;
-   }
-   replacements++;
+      if (foundLocation == NULL)
+      {
+         printf("%s", pcLine);
+         return replacements;
+      }
+      replacements++;
 
-   /* Saves the part of pcLine that comes after the occurance of pcFrom */
-   Str_copy(remainderOfLine, foundLocation + fromLength);
+      while (pcLine != foundLocation)
+      {
+         printf("%c", pcLine);
+         pcLine++;
+      }
 
-   Str_copy(foundLocation, pcTo);
-   Str_concat(line, remainderOfLine);
-   line = foundLocation + toLength;
+      printf("%c", pcTo);
+      pcLine += Str_getLength(pcFrom);
    }
 }
 
@@ -65,8 +60,14 @@ static size_t replaceAndWrite(const char *pcLine,
 
 int main(int argc, char *argv[])
 {
-   enum {MAX_LINE_SIZE = 4096};
-   enum {PROPER_ARG_COUNT = 3};
+   enum
+   {
+      MAX_LINE_SIZE = 4096
+   };
+   enum
+   {
+      PROPER_ARG_COUNT = 3
+   };
 
    char acLine[MAX_LINE_SIZE];
    char *pcFrom;
@@ -82,10 +83,10 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
-   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) {
+   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
+   {
       uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
    }
-      
 
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
