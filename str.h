@@ -1,9 +1,13 @@
+/*--------------------------------------------------------------------*/
+/* str.h                                                              */
+/* Author: Bereketab Tessema                                          */
+/*--------------------------------------------------------------------*/
 #include <stddef.h>
 
 #ifndef STR
 #define STR
 
-/* Returns the length of string input */
+/* Returns the length of string source */
 size_t Str_getLength(const char source[]);
 
 /* Copies the string source to dest and returns pointer to dest */
