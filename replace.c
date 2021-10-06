@@ -40,7 +40,7 @@ static size_t replaceAndWrite(const char *pcLine,
          pcLine++;
       }
 
-      printf("%c", *pcTo);
+      printf("%s", pcTo);
       pcLine += Str_getLength(pcFrom);
    }
 }
