@@ -20,7 +20,7 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   char *foundLocation = pcLine;
+   const char *foundLocation = pcLine;
    size_t replacements = 0;
 
    while (1)
@@ -36,11 +36,11 @@ static size_t replaceAndWrite(const char *pcLine,
 
       while (pcLine != foundLocation)
       {
-         printf("%c", pcLine);
+         printf("%c", *pcLine);
          pcLine++;
       }
 
-      printf("%c", pcTo);
+      printf("%c", *pcTo);
       pcLine += Str_getLength(pcFrom);
    }
 }
